@@ -1,6 +1,14 @@
 <?php
 
-test('la app responde correctamente', function () {
-    $response = $this->get('/');
-    expect($response->getStatusCode())->toBeGreaterThanOrEqual(200);
-});
+namespace Tests\Feature;
+
+use Tests\TestCase;
+
+class HealthcheckTest extends TestCase
+{
+    public function test_la_app_responde(): void
+    {
+        $response = $this->get('/');
+        $this->assertGreaterThanOrEqual(200, $response->getStatusCode());
+    }
+}
